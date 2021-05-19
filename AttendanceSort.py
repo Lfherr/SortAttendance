@@ -23,17 +23,17 @@ def sorted_name(unsorted_file):
     first_part_of_name = ""
     filetime = get_datetime(unsorted_file)
     file_name, file_ext = os.path.splitext(unsorted_file)  # Separates File name from extension
-    if filetime.hour == 7 and (15 < filetime.minute < 59):
+    if (filetime.hour == 7 and (15 <= filetime.minute <= 59)) or (filetime.hour == 8 and filetime.minute <= 10):
         first_part_of_name = "Herrera 1st"
-    elif filetime.hour == 8 and (5 < filetime.minute < 50):
+    elif (filetime.hour == 8 and filetime.minute > 10) or (filetime.hour == 9 and filetime.minute <= 5):
         first_part_of_name = "Herrera 2nd"
-    elif (filetime.hour == 8 and filetime.minute >= 55) or (filetime.hour == 9 and filetime.minute < 40):
+    elif (filetime.hour == 9 and filetime.minute > 5) or (filetime.hour == 10 and filetime.minute == 0):
         first_part_of_name = "Herrera 3rd"
-    elif (filetime.hour == 9 and filetime.minute >= 45) or (filetime.hour == 10 and filetime.minute <= 30):
+    elif (filetime.hour == 10 and filetime.minute > 0) or (filetime.hour == 10 and filetime.minute <= 59):
         first_part_of_name = "Herrera 4th"
-    elif (filetime.hour == 12 and filetime.minute > 30) or (filetime.hour == 13 and filetime.minute <= 15):
+    elif (filetime.hour == 12 and filetime.minute > 30) or (filetime.hour == 13 and filetime.minute <= 25):
         first_part_of_name = "Herrera 6th"
-    elif (filetime.hour == 13 and filetime.minute >= 20) or (filetime.hour == 14 and filetime.minute <=15):
+    elif (filetime.hour == 13 and filetime.minute > 25) or (filetime.hour == 14 and filetime.minute <= 10):
         first_part_of_name = "Herrera 7th"
 
     file_name = first_part_of_name + " " + filetime.strftime('%m') + "_" + filetime.strftime(
